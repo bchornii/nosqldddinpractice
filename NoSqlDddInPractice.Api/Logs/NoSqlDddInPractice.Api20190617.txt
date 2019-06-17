@@ -1,0 +1,91 @@
+2019-06-17 15:29:41.609 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: Handler was not found for request of type MediatR.IRequestHandler`2[NoSqlDddInPractice.Queries.Queries.SnackTypesQuery,NoSqlDddInPractice.Domain.ReadModels.SnakTypeReadModel[]]. Register your handlers with the container. See the samples in GitHub for examples.
+   at MediatR.Internal.RequestHandlerBase.GetHandler[THandler](ServiceFactory factory)
+   at MediatR.Internal.RequestHandlerWrapperImpl`2.<>c__DisplayClass0_0.<Handle>g__Handler|0()
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.ValidatorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\ValidatorBehavior.cs:line 44
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.LoggingBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\LoggingBehavior.cs:line 16
+   at NoSqlDddInPractice.Api.Controllers.SnakMachineController.GetSnackTypes() in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Controllers\SnakMachineController.cs:line 94
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-06-17 15:39:35.020 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+NoSqlDddInPractice.Api.Infrastructure.Behaviours.ValidationException: Command Validation Errors for type InitializeSnakMachineCommand ---> FluentValidation.ValidationException: Validation exception
+   --- End of inner exception stack trace ---
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.ValidatorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\ValidatorBehavior.cs:line 44
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.LoggingBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\LoggingBehavior.cs:line 16
+   at NoSqlDddInPractice.Api.Controllers.SnakMachineController.InitializeSnakMachine(InitializeSnakMachineDto model) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Controllers\SnakMachineController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-06-17 15:47:00.097 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at NoSqlDddInPractice.Domain.Aggregates.SnakMachineAggregate.SnackMachine.get_Slots() in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Domain\Aggregates\SnakMachineAggregate\SnackMachine.cs:line 18
+   at NoSqlDddInPractice.Data.Repositories.SnackMachineRepository.Add(SnackMachine snackMachine) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Data\Repositories\SnackMachineRepository.cs:line 23
+   at DddInPractice.CommandHandlers.Handlers.InitializeSnakMachineCommandHandler.Handle(InitializeSnakMachineCommand request, CancellationToken cancellationToken) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Commands\CommandHandlers\InitializeSnakMachineCommandHandler.cs:line 28
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.ValidatorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\ValidatorBehavior.cs:line 44
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.LoggingBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\LoggingBehavior.cs:line 16
+   at NoSqlDddInPractice.Api.Controllers.SnakMachineController.InitializeSnakMachine(InitializeSnakMachineDto model) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Controllers\SnakMachineController.cs:line 37
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2019-06-17 16:36:29.330 +03:00 [ERR] An unhandled exception has occurred while executing the request.
+DddInPractice.Domain.Aggregates.SnakMachineAggregate.Exceptions.SlotAlreadyExistsException: Exception of type 'DddInPractice.Domain.Aggregates.SnakMachineAggregate.Exceptions.SlotAlreadyExistsException' was thrown.
+   at NoSqlDddInPractice.Domain.Aggregates.SnakMachineAggregate.SnackMachine.AddSlot(Int32 position, Int32 itemsQuantity, Decimal itemPrice, Int32 snackTypeId) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Domain\Aggregates\SnakMachineAggregate\SnackMachine.cs:line 119
+   at DddInPractice.CommandHandlers.Handlers.AddSnackMachineSlotCommandHandler.Handle(AddSnackMachineSlotCommand request, CancellationToken cancellationToken) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Commands\CommandHandlers\AddSnackMachineSlotCommandHandler.cs:line 33
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.ValidatorBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\ValidatorBehavior.cs:line 44
+   at NoSqlDddInPractice.Api.Infrastructure.Behaviours.LoggingBehavior`2.Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate`1 next) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Infrastructure\Behaviours\LoggingBehavior.cs:line 16
+   at NoSqlDddInPractice.Api.Controllers.SnakMachineController.AddSlot(String id, AddSnackMachineSlotDto model) in C:\Users\Bohdan\Source\Repos\NoSqlDddInPractice\NoSqlDddInPractice.Api\Controllers\SnakMachineController.cs:line 58
+   at Microsoft.AspNetCore.Mvc.Internal.ActionMethodExecutor.TaskOfIActionResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at System.Threading.Tasks.ValueTask`1.get_Result()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeActionMethodAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeNextActionFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Rethrow(ActionExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ControllerActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeNextResourceFilter()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Rethrow(ResourceExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeFilterPipelineAsync()
+   at Microsoft.AspNetCore.Mvc.Internal.ResourceInvoker.InvokeAsync()
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware.Invoke(HttpContext httpContext)
+   at Microsoft.AspNetCore.Cors.Infrastructure.CorsMiddleware.InvokeCore(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
