@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using NoSqlDddInPractice.Api.Infrastructure.Extensions;
 using NoSqlDddInPractice.Api.Models;
 using NoSqlDddInPractice.Commands.Commands;
 using NoSqlDddInPractice.Domain.ReadModels;
@@ -54,7 +55,7 @@ namespace NoSqlDddInPractice.Api.Controllers
                 return BadRequest();
             }
 
-            return Ok();
+            return result.ToHttpActionResult();
         }
 
         [Route("{id:length(24)}/addSlot")]

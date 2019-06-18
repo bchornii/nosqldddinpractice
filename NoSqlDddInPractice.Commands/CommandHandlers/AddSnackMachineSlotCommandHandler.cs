@@ -33,9 +33,7 @@ namespace DddInPractice.CommandHandlers.Handlers
                 snackMachine.AddSlot(request.Position, request.ItemsQuantity,
                             request.ItemPrice, request.SnackTypeId);
 
-                _snackMachineRepository.Update(snackMachine);
-                await _snackMachineRepository.UnitOfWork.Commit();
-
+                await _snackMachineRepository.Update(snackMachine);
                 return CommandResult.GetSuccess();
             }
             else

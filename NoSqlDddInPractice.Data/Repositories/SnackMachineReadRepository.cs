@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 using NoSqlDddInPractice.Domain.ReadModels.SnackMachine;
 
 namespace NoSqlDddInPractice.Data.Repositories
@@ -19,8 +20,8 @@ namespace NoSqlDddInPractice.Data.Repositories
         public async Task<SnackMachineReadModel> GetSnackMachine(string id)
         {
             var snackMachine = await _context.SnakMachines.Find(
-                sm => sm.Id == id).FirstOrDefaultAsync();
+                sm => sm.Id == id).FirstOrDefaultAsync();            
             return _mapper.Map<SnackMachineReadModel>(snackMachine);
-        }
+        }        
     }
 }

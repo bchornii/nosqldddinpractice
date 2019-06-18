@@ -3,27 +3,38 @@
     public enum CommandResultStatus
     {
         Ok,
+        OkWithId,
         Failed,
         BadCommandData
     }
 
     public class CommandResult
     {
-        private readonly CommandResultStatus _commandResultStatus;
         private readonly string _message;
 
-        public bool IsSuccess => _commandResultStatus == CommandResultStatus.Ok;
-        public bool IsFailed => _commandResultStatus == CommandResultStatus.Failed ||
-            _commandResultStatus == CommandResultStatus.BadCommandData;
+        public bool IsSuccess => Status == CommandResultStatus.Ok;
+        public bool IsFailed => Status == CommandResultStatus.Failed ||
+            Status == CommandResultStatus.BadCommandData;
 
-        public CommandResult(CommandResultStatus commandResultStatus, string message = null)
+        public string Id { get; }
+        public CommandResultStatus Status { get; }
+
+        public CommandResult(CommandResultStatus commandResultStatus, 
+            string message = null, string id = null)
         {
-            _commandResultStatus = commandResultStatus;
+            Id = id;
+            _message = message;            
+            Status = commandResultStatus;            
         }
 
         public static CommandResult GetSuccess()
         {
             return new CommandResult(CommandResultStatus.Ok);
+        }
+
+        public static CommandResult GetSuccess(string id)
+        {
+            return new CommandResult(CommandResultStatus.OkWithId, null, id);
         }
 
         public static CommandResult GetFailed(string message)

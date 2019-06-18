@@ -5,9 +5,9 @@ namespace NoSqlDddInPractice.Domain.Aggregates.SnakMachineAggregate
 {
     public interface ISnackMachineRepository : IRepository<SnackMachine>
     {
-        void Add(SnackMachine snackMachine);
+        Task<SnackMachine> Add(SnackMachine snackMachine);
         Task<SnackMachine> GetById(string snackMachineId);
-        void Remove(string snakMachineId);
-        void Update(SnackMachine snackMachine);
+        Task Remove(SnackMachine snackMachine);
+        Task Update(SnackMachine snackMachine);
     }
 }

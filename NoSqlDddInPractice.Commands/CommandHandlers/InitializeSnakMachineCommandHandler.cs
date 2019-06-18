@@ -28,9 +28,7 @@ namespace DddInPractice.CommandHandlers.Handlers
 
             var str = snackMachine.ToJson(new MongoDB.Bson.IO.JsonWriterSettings { Indent = true });
 
-            _snakMachineRepository.Add(snackMachine);
-            await _snakMachineRepository.UnitOfWork.Commit();
-
+            await _snakMachineRepository.Add(snackMachine);
             return CommandResult.GetSuccess();
         }
     }

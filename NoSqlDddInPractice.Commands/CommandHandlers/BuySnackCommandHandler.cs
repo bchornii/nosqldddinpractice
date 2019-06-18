@@ -37,8 +37,7 @@ namespace DddInPractice.Commands.Handlers
             {
                 snackMachine.BuySnack(request.SlotPosition);
 
-                _snackMachineRepository.Update(snackMachine);
-                await _snackMachineRepository.UnitOfWork.Commit();
+                await _snackMachineRepository.Update(snackMachine);
             }
             else
             {                

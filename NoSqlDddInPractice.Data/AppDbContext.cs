@@ -1,64 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using MongoDB.Driver;
 using NoSqlDddInPractice.Domain.Aggregates.SnakMachineAggregate;
-using NoSqlDddInPractice.Domain.SeedObjects;
 
 namespace NoSqlDddInPractice.Data
 {
-    public class AppDbContext : IUnitOfWork
+    public class AppDbContext
     {
-        private readonly List<Entity> _touchedEntities;        
-        private readonly List<Func<Task>> _commands;
+        private readonly IMongoClient _client;
+        private readonly IMongoDatabase _database;
 
-        private IMongoClient Client { get; set; }
-
-        private const string _databaseName = "snakmachinedb";
-        private readonly IMediator _mediator;
-
-        private IMongoDatabase Database { get; set; }
-        
-        public IMongoCollection<SnackMachine> SnakMachines =>
-            Database.GetCollection<SnackMachine>("SnakMachines");
+        public MongoDbSet<SnackMachine> SnakMachines { get; }
 
         public AppDbContext(string connectionString, IMediator mediator)
         {
-            _mediator = mediator;
-            _touchedEntities = new List<Entity>();
-            _commands = new List<Func<Task>>();         
+            _client = new MongoClient(connectionString);
+            _database = _client.GetDatabase("snakmachinedb");
 
-            Client = new MongoClient(connectionString);
-            Database = Client.GetDatabase(_databaseName);            
-        }
-
-        public async Task<bool> Commit()
-        {
-            // TODO: domain events can be saved before entities
-            // for case of some exception during entity saving
-
-            var commandTasks = _commands.Select(c => c());
-            await Task.WhenAll(commandTasks);
-            _commands.Clear();
-
-            await _mediator.DispatchDomainEvents(this);
-            _touchedEntities.Clear();
-
-            return true;
-        }
-
-        public void AddCommand(Func<Task> command)
-        {
-            _commands.Add(command);
-        }
-
-        public void AddCommand<TDocument>(TDocument document, 
-            Func<Task> command) where TDocument : Entity
-        {
-            _touchedEntities.Add(document);
-            _commands.Add(command);
+            SnakMachines = new MongoDbSet<SnackMachine>(
+                _database.GetCollection<SnackMachine>("SnakMachines"), mediator);
         }
 
         /// This method wraps changes to domain entities into
